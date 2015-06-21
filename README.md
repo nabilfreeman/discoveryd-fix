@@ -18,9 +18,13 @@ Apple have removed discoveryd in El Capitan (10.11)!!! You can use this script t
 - Run `sh discoveryd.sh`
 
 # what the script does
+launchctl is used to disable discoveryd, and then instantly re-enable it. This effectively reboots it.
+
 `launchctl unload -w /System/Library/LaunchDaemons/com.apple.discoveryd.plist`
 
 `launchctl load -w /System/Library/LaunchDaemons/com.apple.discoveryd.plist`
+
+I added a system log to make sure that my scheduled cron job was running properly. You can remove this.
 
 `syslog -s -l 4 "[freeman] Just restarted discoveryd."`
 
